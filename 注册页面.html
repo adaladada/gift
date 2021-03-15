@@ -1,18 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>注册页面</title>
-    <style>
-        .decoration{
-            text-align: center;
-        }
-    </style>
-    <link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
-    <script>
-        function register() {
-    var BaseURL='http://8.129.238.142:8000';
+window.onload = function() {
+function register() {
+    var BaseURL='http://8.129.238.142/wjl';
     var postRequest=new XMLHttpRequest();
     postRequest.open("POST",BaseURL+'/user')
     var username=document.getElementById('username').value;
@@ -20,7 +8,13 @@
     var sex=document.getElementById('sex').value;
     var nickname=document.getElementById('nickname').value;
     var postData="username="+username+"&password="+password+"&sex="+sex+"&nickname="+nickname;
-    if(username.value.length==0 || password.value.length==0 || sex.value.length==0 || nickname.value.length==0) {
+    if(username.value && password.value && sex.value && nickname.value){
+       if(username.value.length==0 || password.value.length==0 || sex.value.length==0 || nickname.value.length==0) {
+           confirm("有空没填");
+           return;
+        }
+    }
+    else{
         confirm("有空没填");
         return;
     }
@@ -37,19 +31,4 @@
         }
     }
 }
-    </script>
-</head>
-<body>
-    <label for="username">用户名：</label>
-    <input type="text" id="username" placeholder="用户名"><br><br>
-    <label for="password">密码：</label>
-    <form>
-    <input type="password" id="password" placeholder="密码"><br><br>
-    </form>
-    <label for="sex">性别：</label>
-    <input type="text" id="sex" placeholder="性别"><br><br>
-    <label for="nickname">昵称：</label>
-    <input type="text" id="nickname" placeholder="昵称"><br><br>
-    <button onclick="register()">注册</button>
-</body>
-</html>
+}
