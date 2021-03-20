@@ -14,7 +14,7 @@
     var sex=document.getElementById('sex').value;
     var nickname=document.getElementById('nickname').value;
     var postData="username="+username+"&password="+password+"&sex="+sex+"&nickname="+nickname;
-    if(username.value=='' || password.value=='' || sex.value=='' || nickname.value=='') {
+    if(username=='' || password=='' || sex=='' || nickname=='') {
            confirm("有空没填");
            return;
         }
@@ -24,7 +24,7 @@
     postRequest.onreadystatechange=function(){
         if(postRequest.readyState==4){
             if(postRequest.status==200){
-                window.location.href="留言板页面.html";
+                alert("注册成功")
             }
             else{
                 confirm(postRequest.responseText)
@@ -44,6 +44,7 @@
     <input type="text" id="sex" placeholder="性别"><br><br>
     <label for="nickname">昵称：</label>
     <input type="text" id="nickname" placeholder="昵称"><br><br>
-    <button onclick="register()">注册</button>
+    <button onclick="register()">注册</button><br>
+    <a href="登录页面.html">返回登录</a>
 </body>
 </html>
